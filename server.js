@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+// checks for 
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
@@ -17,10 +18,11 @@ app.use(routes);
 
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
-mongoose.connect(process.env.MONGODB_URI || "mongodb://googleBooks:Books83154Google@ds151994.mlab.com:51994/heroku_k4jctb3s", {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://googleBooks:Books83154Google@ds151994.mlab.com:51994/heroku_k4jctb3s",
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  });
 
 // Start the API server
 app.listen(PORT, function () {
