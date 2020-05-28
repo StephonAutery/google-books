@@ -108,7 +108,7 @@ export default class Books extends Component {
                             <li key={book.id} className="card p-2 m-4 w-50">
                                 {book.volumeInfo.title}<hr />
                                 {book.volumeInfo.authors}<hr />
-                                <img alt="book" width="250" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ""} /><hr />
+                                <img alt="book" width="250" src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : "https://via.placeholder.com/250?text=no+image+available"} /><hr />
                                 {book.volumeInfo.description}<hr />
                                 <div></div>
                                 <div></div>

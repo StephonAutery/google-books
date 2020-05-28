@@ -34,13 +34,13 @@ export default class Saved extends Component {
     };
 
     deleteBook = sBook => {
+        console.log(sBook);
         API.deleteBook(sBook)
-            .then(res => {
-                this.setState({
-                    redirect: "/saved"
-                });
-            })
             .catch(err => console.log(err));
+        this.setState({
+            redirect: "/saved",
+            bookID: sBook
+        });
     }
 
     viewBook = sBook => {
@@ -78,7 +78,7 @@ export default class Saved extends Component {
                                 {book.authors}<hr />
                                 <img alt="book" width="250" src={book.thumbnail} /><hr />
                                 {book.synopsis}<hr />
-                                <p><a href="/search">search</a>&nbsp;|&nbsp;<a href="/saved">saved</a></p><hr/>
+                                <p><a href="/search">search</a>&nbsp;|&nbsp;<a href="/saved">saved</a></p><hr />
                                 <button onClick={() => this.deleteBook(book._id)} className="save btn btn-danger">delete me</button><hr />
                                 <button onClick={() => this.viewBook(book._id)} className="save btn btn-info">view me</button>
                             </li>
