@@ -34,6 +34,7 @@ export default class Saved extends Component {
     };
 
     deleteBook = sBook => {
+        event.preventDefault();
         API.deleteBook(sBook)
             .then(res => {
                 this.setState({
