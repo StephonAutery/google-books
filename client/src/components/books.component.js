@@ -74,8 +74,6 @@ export default class Books extends Component {
         API.getGoogleBook(sBook)
             .then(res => {
                 let holdBook = res.data.volumeInfo;
-                // console.log(holdBook);
-                // console.log("------- holdBook ------");
                 this.setState({
                     redirect: "/view",
                     bookID: sBook,

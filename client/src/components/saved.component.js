@@ -8,15 +8,33 @@ export default class Saved extends Component {
         name: "",
         books: [],
         bookID: "",
+        loaded: false,
         redirect: null
     };
 
     componentDidMount() {
         API.getBooks()
             .then(res => {
-                this.setState({ books: res.data });
+                this.setState({
+                    books: res.data,
+                    loaded: true
+                });
             })
             .catch(err => console.log(err));
+    }
+
+    componentDidUpdate() {
+        if (!this.state.loaded) {
+            API.getBooks()
+                .then(res => {
+                    console.log("updated")
+                    this.setState({
+                        books: res.data,
+                        loaded: true
+                    });
+                })
+                .catch(err => console.log(err));
+        }
     }
 
     handleInputChange = event => {
@@ -36,11 +54,13 @@ export default class Saved extends Component {
     deleteBook = sBook => {
         console.log(sBook);
         API.deleteBook(sBook)
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    loaded: false
+                });
+            })
             .catch(err => console.log(err));
-        this.setState({
-            redirect: "/saved",
-            bookID: sBook
-        });
     }
 
     viewBook = sBook => {
